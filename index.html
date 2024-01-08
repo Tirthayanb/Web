@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+    <title>a</title>
+</head>
+
+<body>
+    <h1>Click the button</h1>
+    <button id="myButton">Me!</button>
+    <script>
+        // Modify the button click event to make an AJAX request
+        $('#myButton').on('click', () => {
+            $.ajax({
+                url: '/button-click',
+                method: 'POST',
+                success: function (response) {
+                    console.log(response);
+                },
+                error: function (error) {
+                    console.error('Error triggering button click event:', error);
+                }
+            });
+        });
+
+        // Other button click events
+        $('#myButton').on('click', () => {
+            console.log('Hello');
+        });
+        $('#myButton').on('click', () => {
+            console.log('There!');
+        });
+
+        // Trigger button click event
+        $('#myButton').trigger('click');
+
+        // Turn off button click events
+        $('#myButton').off('click');
+    </script>
+</body>
+
+</html>
